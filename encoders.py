@@ -12,5 +12,5 @@ class JSONEncoderBinary(json.JSONEncoder):
 		>>> JSONEncoderBinary().encode({"foo": ["bar", "baz"]})
 		"""
 		json_str = super(JSONEncoderBinary, self).encode(obj)
-		binaries = list(format(ord(value), 'b') for value in json_str)
+		binaries = list('{:08b}'.format(ord(c)) for c in json_str)
 		return ''.join(binaries)
